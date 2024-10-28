@@ -6,21 +6,20 @@ function addTask(){
         alert("You must write something!");
     }
     else{
-        const count = parseInt(localStorage.getItem("count"))
         let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
+        li.innerHTML = (inputBox.value).charAt(0).toUpperCase() + (inputBox.value).slice(1);
         listContainer.appendChild(li)
         let span = document.createElement("span");
         span.innerHTML = 'x'
+        span.setAttribute("title","Delete")
         li.appendChild(span)
         let small = document.createElement("small");
-        small.setAttribute("id",count)
         small.innerHTML = "🖋"
+        small.setAttribute("title","Edit")
         li.appendChild(small)
     }
     inputBox.value = "";
     saveData()
-    localStorage.setItem(localStorage.getItem("count")+1)
 }
 
 listContainer.addEventListener("click",function(e){
@@ -35,7 +34,7 @@ listContainer.addEventListener("click",function(e){
     
 }
 else if(e.target.tagName === "SMALL"){
-    console.log(document.getElementsByTagName("li"))
+    inputBox.value = e.target.parentElement.innerHTML.split("<span")[0]
     e.target.parentElement.remove();
     saveData()
     }
