@@ -75,6 +75,7 @@ button{
         height: 100vh;
         margin: 0;
         border-radius: 0px;
+        padding: 40px 10px 70px;
     }
     .container{
         padding: 0;
