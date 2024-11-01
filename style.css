@@ -29,6 +29,7 @@
 .todo-app img{
     width: 30px;
     margin-left: 10px;
+    border-radius: 50%;
 }
 .row{
     display: flex;
@@ -56,6 +57,23 @@ button{
     cursor: pointer;
     border-radius: 40px;
 }
+
+h2{
+    position: relative;
+}
+
+.d1{
+    background-color: black;
+}
+.w1{
+    color: #fff;
+}
+
+.dark{
+    position: absolute;
+    right: 0;
+    display: none;
+}
 @media (max-width:447px) {
     .row{
         flex-direction: column;
@@ -79,6 +97,9 @@ button{
     }
     .container{
         padding: 0;
+    }
+    .dark{
+        display: block;
     }
 }
 ul li{
