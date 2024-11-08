@@ -17,6 +17,17 @@ function addTask(){
         small.innerHTML = "🖋"
         small.setAttribute("title","Edit")
         li.appendChild(small)
+        if(document.getElementsByClassName("bx")[0].classList.contains("bxs-moon")){       
+            li.classList.add("w1")
+            span.classList.add("w1")
+            small.classList.add("w1")
+        }
+        else{
+            li.classList.add("d2")
+            span.classList.add("d2")
+            small.classList.add("d2")
+        }
+
     }
     inputBox.value = "";
     saveData()
@@ -44,32 +55,47 @@ function saveData(){
 
 function showTask(){
     listContainer.innerHTML = localStorage.getItem("data")
+    toggleDark()
 }
 showTask();
 
 
 document.getElementsByClassName("bx")[0].addEventListener("click",(e)=>{
-    if(e.target.classList.contains("bx-moon")){
-        e.target.classList.remove("bx-moon")
-        e.target.classList.add("bxs-moon","w1")
-        console.log(document.getElementsByClassName("todo-app")[0].classList.add("d1"))
-        console.log(document.getElementsByClassName("todo-app")[0].children[0].children[0].setAttribute("class","w1"))
+    toggleDark()
+    console.log(document.getElementsByClassName("bx")[0]);
+    console.log(e);
+    
+})
+
+function toggleDark(){
+    let e = document.getElementsByClassName("bx")[0];
+    if(e.classList.contains("bx-moon")){
+        e.classList.remove("bx-moon","b2")
+        e.classList.add("bxs-moon","w1")
+        document.getElementsByClassName("todo-app")[0].classList.add("d1")
+        document.getElementsByClassName("todo-app")[0].children[0].children[0].setAttribute("class","w1")
         document.querySelectorAll("li").forEach(e=>{
             e.classList.add("w1")
             e.children[0].classList.add("w1")
             e.children[1].classList.add("w1")
+            e.classList.remove("d2")
+            e.children[0].classList.remove("d2")
+            e.children[1].classList.remove("d2")
         })
     }
     else{
-        e.target.classList.remove("bxs-moon","w1")
-        e.target.classList.add("bx-moon")
-        console.log(document.getElementsByClassName("todo-app")[0].classList.remove("d1"))
+        e.classList.remove("bxs-moon","w1")
+        e.classList.add("bx-moon","b2")
+        document.getElementsByClassName("todo-app")[0].classList.remove("d1")
         document.querySelectorAll("li").forEach(e=>{
+            e.classList.add("d2")
+            e.children[0].classList.add("d2")
+            e.children[1].classList.add("d2")
             e.classList.remove("w1")
             e.children[0].classList.remove("w1")
             e.children[1].classList.remove("w1")
         })
-        console.log(document.getElementsByClassName("todo-app")[0].children[0].children[0].removeAttribute("class","w1"))
+        document.getElementsByClassName("todo-app")[0].children[0].children[0].removeAttribute("class","w1")
     }
-    
-})
+}
+
