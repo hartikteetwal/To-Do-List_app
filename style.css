@@ -5,6 +5,7 @@
     margin: 0;
     font-family: "outfit";
     box-sizing: border-box;
+    transition: all 0.5s;
 }
 .container{
     width: 100%;
@@ -45,6 +46,7 @@ input{
     outline: none;
     background: transparent;
     padding: 10px;
+    width: 100%;
 }
 button{
     border: none;
@@ -68,13 +70,16 @@ h2{
 .w1{
     color: #fff;
 }
+.d2{
+    color: #000;
+}
 
 .dark{
     position: absolute;
     right: 0;
-    display: none;
+    /* display: none; */
 }
-@media (max-width:447px) {
+@media (max-width:500px) {
     .row{
         flex-direction: column;
         position: relative;
@@ -101,7 +106,11 @@ h2{
     .dark{
         display: block;
     }
+    input{
+        width: 100%;
+    }
 }
+
 ul li{
     list-style: none;
     font-size: 17px;
